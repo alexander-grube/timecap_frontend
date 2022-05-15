@@ -1,4 +1,4 @@
-import React , { FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react'
 import { useState } from 'react'
 
 type AccountRequest = {
@@ -41,15 +41,16 @@ export const Login: FunctionComponent = () => {
             },
             body: JSON.stringify(request)
         })
-        .then(res => res.json())
-        .then(res => {
-            if (res.account) {
-                res = res as AccountResponse
-                document.cookie = `token=${res.account.token}`
-            }
-        }).finally(() => {
-            setLoading(false)
-        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.account) {
+                    res = res as AccountResponse
+                    document.cookie = `token=${res.account.token}`
+                }
+            }).finally(() => {
+                setLoading(false)
+                window.location.reload()
+            })
     }
 
     function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
