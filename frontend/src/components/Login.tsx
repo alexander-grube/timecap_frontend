@@ -1,19 +1,59 @@
 import React , { FunctionComponent } from 'react'
 import { useState } from 'react'
 
+type AccountRequest = {
+    account: {
+        email: string,
+        password: string
+    }
+}
+
+type AccountResponse = {
+    account: {
+        firstname: string,
+        lastname: string,
+        email: string,
+        role: number,
+        token: string
+    }
+}
+
+
 
 export const Login: FunctionComponent = () => {
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loading, setLoading] = useState(false)
 
     function handleLogin(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+        setLoading(true)
         e.preventDefault()
-        console.log(username, password)
-        console.log('login')
+        let request: AccountRequest = {
+            account: {
+                email: email,
+                password: password
+            }
+        }
+        fetch('https://backend-bug-tracker.herokuapp.com/api/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        .then(res => res.json())
+        .then(res => {
+            if (res.account) {
+                res = res as AccountResponse
+                document.cookie = `token=${res.account.token}`
+            }
+        }).finally(() => {
+            setLoading(false)
+        })
     }
 
-    function handleUsername(e: React.ChangeEvent<HTMLInputElement>) {
-        setUsername(e.target.value)
+    function handleEmail(e: React.ChangeEvent<HTMLInputElement>) {
+        setEmail(e.target.value)
     }
 
     function handlePassword(e: React.ChangeEvent<HTMLInputElement>) {
@@ -27,12 +67,12 @@ export const Login: FunctionComponent = () => {
                     <header>Login</header>
                     <form>
                         <label>
-                            <input type="text" placeholder="Username" value={username} onChange={handleUsername} />
+                            <input type="text" placeholder="Email" value={email} onChange={handleEmail} />
                         </label>
                         <label>
                             <input type="password" placeholder="Password" value={password} onChange={handlePassword} />
                         </label>
-                        <button onClick={handleLogin}>Login</button>
+                        <button onClick={handleLogin} aria-busy={loading}>{loading ? "" : "Login"}</button>
                     </form>
                     <footer>timecap</footer>
                 </article>
