@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 
 function isLoggedIn() {
-  console.log(document.cookie.includes('token'))
   return document.cookie.includes('token')
 }
 

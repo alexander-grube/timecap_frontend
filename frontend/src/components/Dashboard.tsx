@@ -102,21 +102,21 @@ export const Dashboard: FunctionComponent = () => {
     <div className='container'>
       <div>Dashboard</div>
       <button onClick={logout}>Logout</button>
-      {tickets.map((ticket: Ticket) => {
-        return (
-          <table key={ticket.ID}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Topic</th>
-                <th>Description</th>
-                <th>Priority</th>
-                <th>Type</th>
-                <th>Status</th>
-                <th>Owner</th>
-              </tr>
-            </thead>
-            <tbody>
+      <table >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Topic</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        {tickets.map((ticket: Ticket) => {
+          return (
+            <tbody key={ticket.ID}>
               <tr>
                 <td>{ticket.ID}</td>
                 <td>{ticket.Topic}</td>
@@ -127,9 +127,10 @@ export const Dashboard: FunctionComponent = () => {
                 <td>{ticket.AccountID}</td>
               </tr>
             </tbody>
-          </table>
-        )
-      })}
+
+          )
+
+        })}</table>
 
     </div>
 
