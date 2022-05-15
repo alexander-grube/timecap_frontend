@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 type AccountRequest = {
     account: {
@@ -77,6 +78,7 @@ export const Login: FunctionComponent = () => {
                     </form>
                     <footer>timecap</footer>
                 </article>
+                <Link to='/test'>Test Error Page</Link>
             </div>
         </div>
     )

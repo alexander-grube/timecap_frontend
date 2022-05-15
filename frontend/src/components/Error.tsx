@@ -1,8 +1,12 @@
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 function Error() {
   return (
-      <h1 className="center">Error - Page Not Found</h1>
+    <div className='center'>
+      <h1>Error - Page Not Found</h1>
+      <Link to='/'>Go Home</Link>
+    </div>
   )
 }
 

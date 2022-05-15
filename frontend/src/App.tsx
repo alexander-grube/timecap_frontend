@@ -1,7 +1,7 @@
 import './App.css'
 import { Login } from './components/Login'
 import Error from './components/Error'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 
 function isLoggedIn() {
@@ -10,14 +10,13 @@ function isLoggedIn() {
 
 function App() {
 
-
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={isLoggedIn() ? <Dashboard /> : <Login />} />
         <Route path="*" element={<Error />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 
