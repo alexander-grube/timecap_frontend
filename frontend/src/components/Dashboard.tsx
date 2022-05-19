@@ -21,7 +21,7 @@ export const Dashboard: FunctionComponent = () => {
       lastname: '',
       email: ''
     };
-    fetch(`https://backend-bug-tracker.herokuapp.com/api/account/${accountID}`, {
+    fetch(`https://backend-bugtracker-eu.herokuapp.com/api/account/${accountID}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const Dashboard: FunctionComponent = () => {
   }
 
   async function getAllTickets() {
-    fetch('https://backend-bug-tracker.herokuapp.com/api/ticket', {
+    fetch('https://backend-bugtracker-eu.herokuapp.com/api/ticket', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

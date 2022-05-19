@@ -35,7 +35,7 @@ export const Login: FunctionComponent = () => {
                 password: password
             }
         }
-        fetch('https://backend-bug-tracker.herokuapp.com/api/users/login', {
+        fetch('https://backend-bugtracker-eu.herokuapp.com/api/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
