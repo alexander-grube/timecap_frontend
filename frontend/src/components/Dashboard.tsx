@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { useState, useEffect } from 'react'
 
+import { useNavigate } from 'react-router-dom'
+
 import { Ticket, mapTicketPriority, mapTicketStatus, mapTicketType } from '../models/Ticket'
 
 function logout() {
@@ -9,7 +11,9 @@ function logout() {
 }
 
 
+
 export const Dashboard: FunctionComponent = () => {
+  const navigate = useNavigate()
   const [tickets, setTickets] = useState<Ticket[]>([])
 
   async function getAllTickets() {
@@ -42,6 +46,10 @@ export const Dashboard: FunctionComponent = () => {
     <div className='container'>
       <div>Dashboard</div>
       <button onClick={logout}>Logout</button>
+      <button onClick={() => {
+        navigate('/tickets/new')
+      }
+      }>New Ticket</button>
       <table >
         <thead>
           <tr>
