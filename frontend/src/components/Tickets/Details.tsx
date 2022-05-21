@@ -10,7 +10,6 @@ export const TicketDetails: FunctionComponent = () => {
     const [ticket, setTicket] = useState<Ticket>({} as Ticket);
     const [loading, setLoading] = useState(false);
 
-
     useEffect(() => {
         setLoading(true);
         fetch(`https://backend-bugtracker-eu.herokuapp.com/api/ticket/${id}`, {
@@ -34,7 +33,7 @@ export const TicketDetails: FunctionComponent = () => {
             <div>Ticket Details</div>
             <div>
                 <label>User:</label>
-                {ticket.account.firstname} {ticket.account.lastname} ({mapAccountRole(ticket.account.role)})
+                {ticket?.account?.firstname} {ticket?.account?.lastname} ({mapAccountRole(ticket?.account?.role)})
             </div>
             <div>
                 <label>Topic:</label>
