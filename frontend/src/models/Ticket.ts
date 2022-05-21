@@ -1,13 +1,13 @@
 import { Account } from "./Account"
 
 export type Ticket = {
-  ID: number,
-  Topic: string,
-  Description: string,
-  Priority: number,
-  Type: number,
-  Status: number,
-  AccountID: number,
+  account: Account
+  id: number,
+  topic: string,
+  description: string,
+  priority: number,
+  type: number,
+  status: number,
 }
 
 enum TicketStatus {
