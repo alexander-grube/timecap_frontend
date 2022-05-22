@@ -1,3 +1,14 @@
 .center {
     text-align: center;
 }
+
+.negative {
+    color: #cc0000;
+    border: solid 1px #cc0000;
+
+}
+
+.negative:hover {
+    color: #ff0000;
+    border: solid 1px #ff0000;
+}

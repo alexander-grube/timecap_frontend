@@ -78,7 +78,6 @@ export const Login: FunctionComponent = () => {
                     </form>
                     <footer>timecap</footer>
                 </article>
-                <Link to='/test'>Test Error Page</Link>
             </div>
         </div>
     )
