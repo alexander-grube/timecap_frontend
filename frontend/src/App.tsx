@@ -17,11 +17,12 @@ function isLoggedIn() {
 
 function App() {
 
-  let modeValue = 'dark'
+  // get darkmode from prefer-color-scheme
 
-  const [mode, setMode] = useState("dark")
+  let modeValue = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+  const [mode, setMode] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
   function changeMode() {
-    console.log("change Mode")
     if (mode === 'dark') {
       setMode('light')
       modeValue = 'light'
