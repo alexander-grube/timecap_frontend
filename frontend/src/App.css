@@ -12,3 +12,7 @@
     color: #ff0000;
     border: solid 1px #ff0000;
 }
+
+.clickable {
+    cursor: pointer;
+}

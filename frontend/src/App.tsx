@@ -5,7 +5,8 @@ import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import { CreateTicket } from './components/Tickets/Create'
 import { TicketDetails } from './components/Tickets/Details'
-import { MdAccountCircle, MdLogout } from 'react-icons/md'
+import { MdAccountCircle, MdDarkMode, MdLogout, MdWbSunny } from 'react-icons/md'
+import { useState } from 'react'
 
 function isLoggedIn() {
   return document.cookie.includes('token')
@@ -13,7 +14,24 @@ function isLoggedIn() {
 
 
 
+
 function App() {
+
+  let modeValue = 'dark'
+
+  const [mode, setMode] = useState("dark")
+  function changeMode() {
+    console.log("change Mode")
+    if (mode === 'dark') {
+      setMode('light')
+      modeValue = 'light'
+      document.getElementsByTagName('html')[0].setAttribute('data-theme', modeValue)
+    } else {
+      setMode('dark')
+      modeValue = 'dark'
+      document.getElementsByTagName('html')[0].setAttribute('data-theme', modeValue)
+    }
+  }
 
   function logout() {
     document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
@@ -30,6 +48,7 @@ function App() {
         <nav>
           <ul>
             <li><Link to={"/"}>Bug Tracker</Link></li>
+            {mode === 'dark' ? <li><MdWbSunny onClick={changeMode} className="clickable" /></li> : <li><MdDarkMode onClick={changeMode} className="clickable" /></li>}
           </ul>
           {isLoggedIn() ? (
             <ul>
