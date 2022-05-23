@@ -12,6 +12,19 @@ function isLoggedIn() {
   return document.cookie.includes('token')
 }
 
+function getThemeValue() {
+  if (localStorage.getItem('theme') === 'dark') {
+    return 'dark'
+  }
+  if (localStorage.getItem('theme') === 'light') {
+    return 'light'
+  }
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark'
+  }
+  return 'light'
+}
+
 
 
 
@@ -19,17 +32,21 @@ function App() {
 
   // get darkmode from prefer-color-scheme
 
-  let modeValue = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  let modeValue = getThemeValue()
 
-  const [mode, setMode] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  const [mode, setMode] = useState(getThemeValue())
+
+  document.getElementsByTagName('html')[0].setAttribute('data-theme', modeValue)
   function changeMode() {
     if (mode === 'dark') {
       setMode('light')
       modeValue = 'light'
+      localStorage.setItem('theme', 'light')
       document.getElementsByTagName('html')[0].setAttribute('data-theme', modeValue)
     } else {
       setMode('dark')
       modeValue = 'dark'
+      localStorage.setItem('theme', 'dark')
       document.getElementsByTagName('html')[0].setAttribute('data-theme', modeValue)
     }
   }

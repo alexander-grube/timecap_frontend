@@ -46,48 +46,56 @@ export const Dashboard: FunctionComponent = () => {
   return (
     <div className='container'>
       <div className='grid'>
-        <nav>
-          <ul>
-            <li><strong>Dashboard</strong></li>
-          </ul>
-          
-        </nav>
 
       </div>
+      <article>
+        <header>
+          <nav>
+            <ul>
+              <li><strong>Dashboard</strong></li>
+            </ul>
+            <ul>
+              <li>
+                <button onClick={() => {
+                  navigate('/tickets/new')
+                }
+                }><MdAdd />New Ticket</button>
+              </li>
+            </ul>
+          </nav>
+        </header>
 
-      <button onClick={() => {
-        navigate('/tickets/new')
-      }
-      }><MdAdd />New Ticket</button>
-      {
-        loading ? <article aria-busy="true"></article> : <table role={"grid"}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Topic</th>
-              <th>Priority</th>
-              <th>Type</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          {tickets.map((ticket: Ticket) => {
-            return (
-              <tbody key={ticket.id}>
-                <tr>
-                  <td>{ticket.id}</td>
-                  <td><Link to={"/ticket/" + ticket.id}>{ticket.topic}</Link></td>
-                  <td>{mapTicketPriority(ticket.priority)}</td>
-                  <td>{mapTicketType(ticket.type)}</td>
-                  <td>{mapTicketStatus(ticket.status)}</td>
-                </tr>
-              </tbody>
 
-            )
+        {
+          loading ? <article aria-busy="true"></article> : <table role={"grid"}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Topic</th>
+                <th>Priority</th>
+                <th>Type</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            {tickets.map((ticket: Ticket) => {
+              return (
+                <tbody key={ticket.id}>
+                  <tr>
+                    <td>{ticket.id}</td>
+                    <td><Link to={"/ticket/" + ticket.id}>{ticket.topic}</Link></td>
+                    <td>{mapTicketPriority(ticket.priority)}</td>
+                    <td>{mapTicketType(ticket.type)}</td>
+                    <td>{mapTicketStatus(ticket.status)}</td>
+                  </tr>
+                </tbody>
 
-          })}</table>
-      }
-      
+              )
 
+            })}</table>
+        }
+
+
+      </article>
     </div>
 
   )
