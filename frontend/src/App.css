@@ -1,18 +1,21 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .negative {
-    color: #cc0000;
-    border: solid 1px #cc0000;
-
+  color: #cc0000;
+  border: solid 1px #cc0000;
 }
 
 .negative:hover {
-    color: #ff0000;
-    border: solid 1px #ff0000;
+  color: #ff0000;
+  border: solid 1px #ff0000;
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
