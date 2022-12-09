@@ -18,7 +18,7 @@ export const Dashboard: FunctionComponent = () => {
 
   async function getAllTickets() {
     setLoading(true)
-    fetch('https://backend-bugtracker-eu.herokuapp.com/api/ticket', {
+    fetch('https://backend-bugtrack.alexgrube.dev/api/ticket', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

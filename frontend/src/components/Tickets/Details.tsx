@@ -14,7 +14,7 @@ export const TicketDetails: FunctionComponent = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://backend-bugtracker-eu.herokuapp.com/api/ticket/${id}`, {
+        fetch(`https://backend-bugtrack.alexgrube.dev/api/ticket/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export const TicketDetails: FunctionComponent = () => {
     function updateTicket() {
         setLoading(true);
         setEditMode(false);
-        fetch(`https://backend-bugtracker-eu.herokuapp.com/api/ticket/${id}`, {
+        fetch(`https://backend-bugtrack.alexgrube.dev/api/ticket/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

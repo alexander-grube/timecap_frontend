@@ -34,7 +34,7 @@ export const CreateTicket: FunctionComponent = () => {
             }
         }
 
-        fetch('https://backend-bugtracker-eu.herokuapp.com/api/ticket/new', {
+        fetch('https://backend-bugtrack.alexgrube.dev/api/ticket/new', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
