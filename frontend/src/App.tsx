@@ -7,6 +7,7 @@ import { CreateTicket } from './components/Tickets/Create'
 import { TicketDetails } from './components/Tickets/Details'
 import { MdAccountCircle, MdDarkMode, MdLogout, MdWbSunny } from 'react-icons/md'
 import { useState } from 'react'
+import { MyAccount } from './components/Accounts/MyAccount'
 
 function isLoggedIn() {
   return document.cookie.includes('token')
@@ -80,6 +81,7 @@ function App() {
         <Route path="/" element={isLoggedIn() ? <Dashboard /> : <Login />} />
         <Route path="/tickets/new" element={isLoggedIn() ? <CreateTicket /> : <Login />} />
         <Route path="/ticket/:id" element={isLoggedIn() ? <TicketDetails /> : <Login />} />
+        <Route path="/account" element={isLoggedIn() ? <MyAccount /> : <Login />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>
