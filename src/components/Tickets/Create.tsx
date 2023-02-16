@@ -1,5 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TicketPriority, TicketStatus, TicketType } from "../../models/Ticket";
 
 type TicketRequest = {
     ticket: {
@@ -14,9 +15,9 @@ type TicketRequest = {
 export const CreateTicket: FunctionComponent = () => {
     const navigate = useNavigate();
     const [topic, setTopic] = useState("");
-    const [priority, setPriority] = useState("1");
-    const [type, setType] = useState("3");
-    const [status, setStatus] = useState("1");
+    const [priority, setPriority] = useState(TicketPriority.Low);
+    const [type, setType] = useState(TicketType.Feature);
+    const [status, setStatus] = useState(TicketStatus.New);
     const [description, setDescription] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -27,9 +28,9 @@ export const CreateTicket: FunctionComponent = () => {
         let request: TicketRequest = {
             ticket: {
                 topic: topic,
-                priority: parseInt(priority),
-                type: parseInt(type),
-                status: parseInt(status),
+                priority: priority,
+                type: type,
+                status: status,
                 description: description
             }
         }
@@ -61,25 +62,25 @@ export const CreateTicket: FunctionComponent = () => {
                 <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} />
 
                 <label>Priority:</label>
-                <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-                    <option value={"1"}>Low</option>
-                    <option value={"2"}>Medium</option>
-                    <option value={"3"}>High</option>
+                <select value={priority} onChange={(e) => setPriority(parseInt(e.target.value))}>
+                    <option value={TicketPriority.Low}>Low</option>
+                    <option value={TicketPriority.Medium}>Medium</option>
+                    <option value={TicketPriority.High}>High</option>
                 </select>
 
                 <label>Type:</label>
-                <select value={type} onChange={(e) => setType(e.target.value)}>
-                    <option value={"3"}>Feature</option>
-                    <option value={"2"}>Bug</option>
-                    <option value={"1"}>Other</option>
+                <select value={type} onChange={(e) => setType(parseInt(e.target.value))}>
+                    <option value={TicketType.Feature}>Feature</option>
+                    <option value={TicketType.Bug}>Bug</option>
+                    <option value={TicketType.Other}>Other</option>
                 </select>
 
                 <label>Status:</label>
-                <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                    <option value={"1"}>New</option>
-                    <option value={"2"}>Open</option>
-                    <option value={"3"}>In Progress</option>
-                    <option value={"4"}>Resolved</option>
+                <select value={status} onChange={(e) => setStatus(parseInt(e.target.value))}>
+                    <option value={TicketStatus.New}>New</option>
+                    <option value={TicketStatus.Open}>Open</option>
+                    <option value={TicketStatus.InProgress}>In Progress</option>
+                    <option value={TicketStatus.Resolved}>Resolved</option>
                 </select>
 
                 <label>Description:</label>

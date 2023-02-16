@@ -2,7 +2,7 @@ import { FunctionComponent, useState, useEffect } from "react";
 import { MdDelete, MdEdit, MdUpdate } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { mapAccountRole } from "../../models/Account";
-import { mapTicketPriority, mapTicketStatus, mapTicketType, Ticket } from "../../models/Ticket";
+import { mapTicketPriority, mapTicketStatus, mapTicketType, Ticket, TicketPriority, TicketStatus, TicketType } from "../../models/Ticket";
 
 export const TicketDetails: FunctionComponent = () => {
 
@@ -93,28 +93,28 @@ export const TicketDetails: FunctionComponent = () => {
                         <label>Priority:</label>
                         {editMode ? (
                             <select value={ticket.priority} onChange={(e) => setTicket({ ...ticket, priority: parseInt(e.target.value) })}>
-                                <option value={1}>Low</option>
-                                <option value={2}>Medium</option>
-                                <option value={3}>High</option>
+                                <option value={TicketPriority.Low}>Low</option>
+                                <option value={TicketPriority.Medium}>Medium</option>
+                                <option value={TicketPriority.High}>High</option>
                             </select>
                         ) : <input type="text" value={mapTicketPriority(ticket.priority)} readOnly />}
 
                         <label>Type:</label>
                         {editMode ? (
                             <select value={ticket.type} onChange={(e) => setTicket({ ...ticket, type: parseInt(e.target.value) })}>
-                                <option value={3}>Feature</option>
-                                <option value={2}>Bug</option>
-                                <option value={1}>Other</option>
+                                <option value={TicketType.Feature}>Feature</option>
+                                <option value={TicketType.Bug}>Bug</option>
+                                <option value={TicketType.Other}>Other</option>
                             </select>
                         ) : <input type="text" value={mapTicketType(ticket.type)} readOnly />}
 
                         <label>Status:</label>
                         {editMode ? (
                             <select value={ticket.status} onChange={(e) => setTicket({ ...ticket, status: parseInt(e.target.value) })}>
-                                <option value={1}>New</option>
-                                <option value={2}>Open</option>
-                                <option value={3}>In Progress</option>
-                                <option value={4}>Resolved</option>
+                                <option value={TicketStatus.New}>New</option>
+                                <option value={TicketStatus.Open}>Open</option>
+                                <option value={TicketStatus.InProgress}>In Progress</option>
+                                <option value={TicketStatus.Resolved}>Resolved</option>
                             </select>
                         ) : <input type="text" value={mapTicketStatus(ticket.status)} readOnly />}
                     </div>

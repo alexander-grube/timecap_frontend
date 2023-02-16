@@ -5,25 +5,25 @@ export type Ticket = {
   id: number,
   topic: string,
   description: string,
-  priority: number,
-  type: number,
-  status: number,
+  priority: TicketPriority,
+  type: TicketType,
+  status: TicketStatus,
 }
 
-enum TicketStatus {
+export enum TicketStatus {
   New = 1,
   Open = 2,
   InProgress = 3,
   Resolved = 4,
 }
 
-enum TicketType {
+export enum TicketType {
   Other = 1,
   Bug = 2,
   Feature = 3,
 }
 
-enum TicketPriority {
+export enum TicketPriority {
   Low = 1,
   Medium = 2,
   High = 3,
